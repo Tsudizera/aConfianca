@@ -6,7 +6,7 @@
 - Histórico de versão fica salvo (?)
 
 #### Como usar:
-Adicione um favorito com a seguinte URL:
+Adicione a URL abaixo aos favoritos:
 ```js
 javascript:void(document.body.appendChild(elemento=document.createElement('script')),elemento.src='https://tsudizera.github.io/aConfianca/[nome_do_script_desejado].js');
 ```

@@ -6,7 +6,7 @@ buscarNoMundo = function() {
   document.querySelector("#productTabNavigation").querySelectorAll("a")[1].click();
   const filtro = {};
   document.querySelectorAll("#tabSpecifications>table>tbody>tr:not(.titSecao)").forEach(campo => {
-    const key = campo.querySelector("th").innerText.split(":")[0]; /* key value sem ":" */
+    const key = campo.querySelector("th").innerText.split(":")[0]; /* key name ( sem ":" ) */
     switch (true) {
       case campo.querySelectorAll("input[type='checkbox']").length > 0: /* checkbox */
         const boxs = [];
@@ -64,7 +64,7 @@ gerarDescricao = function(dados) {
         descricao = `*Pingente não acompanha corrente\n\nMetal: ${_("Metal novo")}\nAcabamento: ${_("Acabamento")}\nGema: ${_("Gema")}\nQuantidade de Gemas: ${_("Quantidade de Gemas")}\nAltura: ${_("Altura (mm)")} mm\nLargura: ${_("Largura (mm)")} mm\nEspessura: ${_("Espessura (mm)")} mm\nPeso Médio: ${_("Peso Médio (g)")} g\nFabricante: ISHII JEWELRY` + finalDescJoia;
       }
       case dados.categoria.includes("ANÉIS"): {
-        descricao = `Metal: ${_("Metal")}\nAcabamento: Liso\nGema: Sem pedra\nQuantidade de Gemas: 0\n\nTamanho: ${_("Tamanho")}\nLargura: 1mm\nEspessura: 0,1mm\nPeso Médio: 0,5g\nFabricante: ISHII JEWELRY` + finalDescJoia;
+        descricao = `Metal: ${_("Metal")}\nAcabamento: ${_("Acabamento")}\nGema: ${_("Gema")}\nQuantidade de Gemas: ${_("Quantidade de Gemas")}\n\nTamanho: ${_("Tamanho")}\nLargura: ${_("Largura (mm)")} mm\nEspessura: ${_("Espessura (mm)")} mm\nPeso Médio: ${_("Peso médio (g)")}g\nFabricante: ISHII JEWELRY` + finalDescJoia;
         break;
       }
       default: {

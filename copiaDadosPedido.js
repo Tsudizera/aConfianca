@@ -80,16 +80,14 @@ try {
       console.log("ML");
       const pedido = $$(".sc-text")[0].innerText.match(/#\d*/g)[0].replace(/#/g, "");
       const cpf = $("div.sc-buyer__content p").innerText.split(" CPF ")[1];
-      let nome, listaItens = [];
-
+      const nome = $("div.sc-buyer__content b").innerText;
+      
+      const listaItens = [];
+      
       if ($(".sc-status__title-detail-container").innerHTML.includes("<svg")) {
         console.log("ML FULL");
-        nome = $("div.sc-buyer__content b").innerText;
-        /* PENDENTE! Não sei como fica o html quando compra mais que 1 item diferente */
-        /* talvez seja igual ao ML normal */
+        console.warn('ITENS PENDENTE! Não sei como fica o html quando compra mais que 1 item diferente. Se pá é igual ao ML normal.');
       } else {
-        nome = $(".sc-title-subtitle-action__sublabel p").innerHTML.split("<br>")[0].split(" - ")[0];
-
         const itens = $$("div.sc-row-content.sc-row-content__expanded.sc-row-content__with-border>div");
         for (const i of itens) {
           const obj = {

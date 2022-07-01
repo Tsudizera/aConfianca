@@ -4,7 +4,7 @@
 /* (!) Parcial! Pendencias da VIA e MLFULL */
 
 console.clear();
-console.log("VERSÃO: 2022 jun 30");
+console.log("VERSÃO: 2022 JUL 1");
 var $ = (q, parent = document) => parent.querySelector(q);
 var $$ = (q, parent = document) => [...parent.querySelectorAll(q)];
 
@@ -56,8 +56,8 @@ try {
     case link.includes("americanasmarketplace.com.br/v3/pedidos/detalhes"): {
       console.log("B2W");
       const pedido = $("h1 span").innerText;
-      const nome = $$(".card")[6].querySelectorAll(".col-md-12")[1].querySelector("span").innerText;
-      const cpf = $$(".card")[6].querySelectorAll(".col-md-4")[0].querySelector("span").innerText;
+      const nome = $('section[_ngcontent-c22] .card').querySelectorAll(".col-md-12")[1].querySelector("span").innerText;
+      const cpf = $('section[_ngcontent-c22] .card').querySelectorAll(".col-md-4")[0].querySelector("span").innerText;
 
       const item = $$("div.card")[3];
       const listaModelo = $$(".p14-bold", item);

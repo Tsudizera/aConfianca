@@ -1,6 +1,6 @@
 javascript: console.clear(); /* GERA DESCRIÇÃO PELO FILTRO */
 
-console.log("VERSÃO DE 2022 JUN 24");
+console.log("VERSÃO: 2022 JUL 2");
 
 buscarNoMundo = function() {
   document.querySelector("#productTabNavigation").querySelectorAll("a")[1].click();
@@ -52,6 +52,11 @@ gerarDescricao = function(dados) {
   try {
     const finalDescJoia = `\n\nAs imagens das Joias são ampliadas para melhor visualização, não correspondendo ao tamanho original.\n\nProduto de qualidade certificada pela AConfiança.\nGarantimos a procedência e autenticidade, bem como proteção contra defeito de fabricação por 3 meses. Não são cobertos os danos por quebras, perda de pedras, amassados, arranhões, desgastes, gravados e manchas por produtos químicos.\n\nRecomendações:\nEvite contato com produtos químicos: perfume, creme, pomada, cloro, mercúrio, detergente, etc.\nNão utilizar em tarefas manuais pesadas.\nAs Joias são artigos de valor. Conservadas de maneira apropriada, serão eternas.`;
     switch (true) {
+      default: {
+        const pressao = _("Pressão debaixo dágua (ATM)");
+        descricao = `Relógio ${_("categoria")} ${_("Modelo")} novo e original.\nAcompanha embalagem oficial, certificado de garantia de 1 ano pelo fabricante, manual e nota fiscal.\n\nModelo: ${_("Modelo")}\nGênero: ${_("Gênero")}\nGarantia: 12 meses\n\nCaracterísticas\nFormato do Relógio: ${_("Formato do Relógio")}\nComposição do Vidro: ${_("Composição do Vidro")}\nMaterial da Caixa: ${_("Material da Caixa")}\nCor da Caixa: ${_("Cor da Caixa")}\nCor do mostrador: ${_("Cor do Mostrador")}\nMaterial da Pulseira: ${_("Material da Pulseira")}\nCor da Pulseira: ${_("Cor da Pulseira")}\nMecanismo: ${_("Mecanismo")}\n\nMedidas\nLargura da Caixa: ${_("Largura da Caixa (mm)")} mm\nEspessura da Caixa: ${_("Espessura da Caixa (mm)")} mm\n\nResistência à Água\nPressão: ${pressao} ATMs\nResistência a respingos: Sim\nPrática de natação: ${pressao>=5?"Sim":"Não recomendado"}\nPrática de mergulho: ${pressao>=10?"Sim":"Não recomendado"}\nNão recomendado utilizar em água salgada ou durante o banho quente\n(exceto relógios apropriados para mergulho profissional)${dados["Funções do Relógio"]?.length ?`\n\nFunções do Relógio\n${dados["Funções do Relógio"]}`:""}`;
+        break;
+      }
       case dados.categoria.includes("BRINCO"): {
         descricao = `Tamanho: ${_("Tamanho")}\nTipo: ${_("Tipo")}\nMetal: ${_("Metal")}\nAcabamento: ${_("Acabamento")}\nGema: ${_("Gema")}\nQuantidade de Gemas: ${_("Quantidade de Gemas")}\nTipo de Fecho: ${_("Tipo de Fecho")}\nAltura: ${_("Altura (mm)")}mm\nEspessura: ${_("Espessura (mm)")}mm\nPeso Médio: ${_("Peso Médio do Par (g)")}g (par)\nModelo: ${_("Modelo")}\nFabricante: ISHII JEWELRY` + finalDescJoia;
         break;
@@ -67,10 +72,10 @@ gerarDescricao = function(dados) {
         descricao = `Metal: ${_("Metal")}\nAcabamento: ${_("Acabamento")}\nGema: ${_("Gema")}\nQuantidade de Gemas: ${_("Quantidade de Gemas")}\n\nTamanho: ${_("Tamanho")}\nLargura: ${_("Largura (mm)")} mm\nEspessura: ${_("Espessura (mm)")} mm\nPeso Médio: ${_("Peso médio (g)")}g\nFabricante: ISHII JEWELRY` + finalDescJoia;
         break;
       }
-      default: {
-        const pressao = _("Pressão debaixo dágua (ATM)");
-        descricao = `Relógio ${_("categoria")} ${_("Modelo")} novo e original.\nAcompanha embalagem oficial, certificado de garantia de 1 ano pelo fabricante, manual e nota fiscal.\n\nModelo: ${_("Modelo")}\nGênero: ${_("Gênero")}\nGarantia: 12 meses\n\nCaracterísticas\nFormato do Relógio: ${_("Formato do Relógio")}\nComposição do Vidro: ${_("Composição do Vidro")}\nMaterial da Caixa: ${_("Material da Caixa")}\nCor da Caixa: ${_("Cor da Caixa")}\nCor do mostrador: ${_("Cor do Mostrador")}\nMaterial da Pulseira: ${_("Material da Pulseira")}\nCor da Pulseira: ${_("Cor da Pulseira")}\nMecanismo: ${_("Mecanismo")}\n\nMedidas\nLargura da Caixa: ${_("Largura da Caixa (mm)")} mm\nEspessura da Caixa: ${_("Espessura da Caixa (mm)")} mm\n\nResistência à Água\nPressão: ${pressao} ATMs\nResistência a respingos: Sim\nPrática de natação: ${pressao>=5?"Sim":"Não recomendado"}\nPrática de mergulho: ${pressao>=10?"Sim":"Não recomendado"}\nNão recomendado utilizar em água salgada ou durante o banho quente\n(exceto relógios apropriados para mergulho profissional)${dados["Funções do Relógio"]?.length ?`\n\nFunções do Relógio\n${dados["Funções do Relógio"]}`:""}`;
-      };
+      case dados.categoria.includes("CORRENTES"): {
+        descricao = `Tipo de Elos: ${_("Tipo de Elos")}\nMetal: ${_("Metal")}\nTipo de Fecho: ${_("Tipo de Fecho")}\nComprimento: ${_("Comprimento")}cm\nEspessura: ${_("Espessura (mm)")}mm\nPeso Médio: ${_("Peso Médio (g)")}g\nModelo: ${_("Modelo")}\nFabricante: ISHII JEWELRY` + finalDescJoia;
+        break;
+      }
     }
     if (deuruim.length) {
       alert(`${deuruim.length} CAMPO PENDENTE!\n\n${deuruim.join(", ")}`)

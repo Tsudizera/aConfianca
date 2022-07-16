@@ -56,8 +56,8 @@ try {
     case link.includes("americanasmarketplace.com.br/v3/pedidos/detalhes"): {
       console.log("B2W");
       const pedido = $("h1 span").innerText;
-      const nome = $('section[_ngcontent-c22] .card').querySelectorAll(".col-md-12")[1].querySelector("span").innerText;
-      const cpf = $('section[_ngcontent-c22] .card').querySelectorAll(".col-md-4")[0].querySelector("span").innerText;
+      const nome = $$('section[_ngcontent-c22] .card .col-md-12')[1].querySelector("span").innerText;
+      const cpf = $$('section[_ngcontent-c22] .card .col-md-4')[0].querySelector("span").innerText;
 
       const item = $$("div.card")[3];
       const listaModelo = $$(".p14-bold", item);
@@ -105,7 +105,7 @@ try {
     case link.includes("amazon.com.br/orders-v3/order"): {
       console.log("AMZ");
       const pedido = $("span[data-test-id=order-id-value]").innerText;
-      const nome = $("div[data-test-id=shipping-section-buyer-address]").querySelectorAll("span")[0].innerText.slice(0, -1);
+      const nome = $$("div[data-test-id=shipping-section-buyer-address] span")[0].innerText.slice(0, -1);
       const cpf = $$("div.a-box")[2].querySelectorAll("span")[6].innerText;
       const itens = $$("div.a-row.a-spacing-large table.a-keyvalue>tbody>tr");
 
@@ -145,7 +145,7 @@ try {
       for (const i of itens) {
         const obj = {
           modelo: $("a", i).innerText,
-          sku: $("[class='admin-orders-1fja3tm'] [class='admin-orders-1qjm10e'] div:nth-child(1)", i).innerText.split("(")[1],
+          sku: $(".admin-orders-1fja3tm .admin-orders-1qjm10e .admin-orders-0:first-child", i).innerText.split("(")[1],
           qtd: $(":scope > div:nth-child(3)", i).innerText
         };
         listaItens.push(obj)

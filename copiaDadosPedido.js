@@ -55,7 +55,7 @@ try {
 
     case link.includes("americanasmarketplace.com.br/v3/pedidos/detalhes"): {
       console.log("B2W");
-      const pedido = $("h1 span").innerText;
+      const pedido = $(".timeline-delivery .p14").innerText;
       const nome = $$('section[_ngcontent-c22] .card .col-md-12')[1].querySelector("span").innerText;
       const cpf = $$('section[_ngcontent-c22] .card .col-md-4')[0].querySelector("span").innerText;
 

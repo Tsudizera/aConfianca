@@ -1,6 +1,6 @@
 javascript: console.clear(); /* GERA DESCRIÇÃO PELO FILTRO */
 
-console.log("VERSÃO: 2022 JUL 2");
+console.log("VERSÃO: 2022 AGO 10");
 
 buscarNoMundo = function() {
   document.querySelector("#productTabNavigation").querySelectorAll("a")[1].click();
@@ -54,26 +54,26 @@ gerarDescricao = function(dados) {
     switch (true) {
       default: {
         const pressao = _("Pressão debaixo dágua (ATM)");
-        descricao = `Relógio ${_("categoria")} ${_("Modelo")} novo e original.\nAcompanha embalagem oficial, certificado de garantia de 1 ano pelo fabricante, manual e nota fiscal.\n\nModelo: ${_("Modelo")}\nGênero: ${_("Gênero")}\nGarantia: 12 meses\n\nCaracterísticas\nFormato do Relógio: ${_("Formato do Relógio")}\nComposição do Vidro: ${_("Composição do Vidro")}\nMaterial da Caixa: ${_("Material da Caixa")}\nCor da Caixa: ${_("Cor da Caixa")}\nCor do mostrador: ${_("Cor do Mostrador")}\nMaterial da Pulseira: ${_("Material da Pulseira")}\nCor da Pulseira: ${_("Cor da Pulseira")}\nMecanismo: ${_("Mecanismo")}\n\nMedidas\nLargura da Caixa: ${_("Largura da Caixa (mm)")} mm\nEspessura da Caixa: ${_("Espessura da Caixa (mm)")} mm\n\nResistência à Água\nPressão: ${pressao} ATMs\nResistência a respingos: Sim\nPrática de natação: ${pressao>=5?"Sim":"Não recomendado"}\nPrática de mergulho: ${pressao>=10?"Sim":"Não recomendado"}\nNão recomendado utilizar em água salgada ou durante o banho quente\n(exceto relógios apropriados para mergulho profissional)${dados["Funções do Relógio"]?.length ?`\n\nFunções do Relógio\n${dados["Funções do Relógio"]}`:""}`;
+        descricao = `Relógio ${_("categoria")} ${_("Modelo")} novo e original.\nAcompanha embalagem oficial, certificado de garantia de 1 ano pelo fabricante, manual e nota fiscal.\n\nModelo: ${_("Modelo")}\nGênero: ${_("Gênero")}\nGarantia: 12 meses\n\nCaracterísticas\nFormato do Relógio: ${_("Formato do Relógio")}\nComposição do Vidro: ${_("Composição do Vidro")}\nMaterial da Caixa: ${_("Material da Caixa")}\nCor da Caixa: ${_("Cor da Caixa")}\nCor do mostrador: ${_("Cor do Mostrador")}\nMaterial da Pulseira: ${_("Material da Pulseira")}\nCor da Pulseira: ${_("Cor da Pulseira")}\nMecanismo: ${_("Mecanismo")}\n\nMedidas\nLargura da Caixa: ${_("Largura da Caixa (mm)")} mm\nEspessura da Caixa: ${_("Espessura da Caixa (mm)")} mm\n\nResistência à Água\nPressão: ${pressao} ATMs\nResistência a respingos: Sim\nPrática de natação: ${pressao>=5?"Sim":"Não recomendado"}\nPrática de mergulho: ${pressao>=10?"Sim":"Não recomendado"}\nNão recomendado utilizar em água salgada ou durante o banho quente\n(exceto relógios apropriados para mergulho profissional)${dados["Funções do Relógio"]?.length ? `\n\nFunções do Relógio\n${dados["Funções do Relógio"]}`:""}`;
         break;
       }
       case dados.categoria.includes("BRINCO"): {
-        descricao = `Tamanho: ${_("Tamanho")}\nTipo: ${_("Tipo")}\nMetal: ${_("Metal")}\nAcabamento: ${_("Acabamento")}\nGema: ${_("Gema")}\nQuantidade de Gemas: ${_("Quantidade de Gemas")}\nTipo de Fecho: ${_("Tipo de Fecho")}\nAltura: ${_("Altura (mm)")}mm\nEspessura: ${_("Espessura (mm)")}mm\nPeso Médio: ${_("Peso Médio do Par (g)")}g (par)\nModelo: ${_("Modelo")}\nFabricante: ISHII JEWELRY` + finalDescJoia;
+        descricao = `Tamanho: ${_("Tamanho")}\nTipo: ${_("Tipo")}\nMetal: ${_("Metal")}\nAcabamento: ${_("Acabamento")}\nGema: ${_("Gema")}\nTipo de Fecho: ${_("Tipo de Fecho")}\nAltura: ${_("Altura (mm)")}mm\nEspessura: ${_("Espessura (mm)")}mm\nPeso Aproximado: ${_("Peso Aproximado (g)")}g (par)\nModelo: ${_("Modelo")}\nFabricante: ISHII JEWELRY` + finalDescJoia;
         break;
       }
       case dados.categoria.includes("PULSEIRA"): {
-        descricao = `Tamanho: ${_("Tamanho")}\nTipo de Elos: ${_("Tipo de Elos")}\nMetal: ${_("Metal")}\nAcabamento: ${_("Acabamento")}\nGema: ${_("Gema")}\nQuantidade de Gemas: ${_("Quantidade de Gemas")}\nTipo de Fecho: ${_("Tipo de Fecho")}\nComprimento: ${_("Comprimento (mm)")}mm\nEspessura: ${_("Espessura (mm)")}mm\nPeso Médio: ${_("Peso Médio (g)")}g\nModelo: ${_("Modelo")}\nFabricante: ISHII JEWELRY` + finalDescJoia;
+        descricao = `Tamanho: ${_("Tamanho")}\nTipo de Elos: ${_("Tipo de Elos")}\nMetal: ${_("Metal")}\nAcabamento: ${_("Acabamento")}\nGema: ${_("Gema")}\nTipo de Fecho: ${_("Tipo de Fecho")}\nComprimento: ${_("Comprimento (mm)")}mm\nEspessura: ${_("Espessura (mm)")}mm\nPeso Aproximado: ${_("Peso Aproximado (g)")}g\nModelo: ${_("Modelo")}\nFabricante: ISHII JEWELRY` + finalDescJoia;
         break;
       }
       case dados.categoria.includes("PINGENTE"): {
-        descricao = `*Pingente não acompanha corrente\n\nMetal: ${_("Metal novo")}\nAcabamento: ${_("Acabamento")}\nGema: ${_("Gema")}\nQuantidade de Gemas: ${_("Quantidade de Gemas")}\nAltura: ${_("Altura (mm)")} mm\nLargura: ${_("Largura (mm)")} mm\nEspessura: ${_("Espessura (mm)")} mm\nPeso Médio: ${_("Peso Médio (g)")} g\nFabricante: ISHII JEWELRY` + finalDescJoia;
+        descricao = `*Pingente não acompanha corrente\n\nMetal: ${_("Metal novo")}\nAcabamento: ${_("Acabamento")}\nGema: ${_("Gema")}\nAltura: ${_("Altura (mm)")} mm\nLargura: ${_("Largura (mm)")} mm\nEspessura: ${_("Espessura (mm)")} mm\nPeso Aproximado: ${_("Peso Aproximado (g)")}g\nFabricante: ISHII JEWELRY` + finalDescJoia;
       }
       case dados.categoria.includes("ANÉIS"): {
-        descricao = `Metal: ${_("Metal")}\nAcabamento: ${_("Acabamento")}\nGema: ${_("Gema")}\nQuantidade de Gemas: ${_("Quantidade de Gemas")}\n\nTamanho: ${_("Tamanho")}\nLargura: ${_("Largura (mm)")} mm\nEspessura: ${_("Espessura (mm)")} mm\nPeso Médio: ${_("Peso médio (g)")}g\nFabricante: ISHII JEWELRY` + finalDescJoia;
+        descricao = `Metal: ${_("Metal")}\nAcabamento: ${_("Acabamento")}\nGema: ${_("Gema")}\n\nTamanho: ${_("Tamanho")}\nLargura: ${_("Largura (mm)")} mm\nEspessura: ${_("Espessura (mm)")} mm\nPeso Aproximado: ${_("Peso Aproximado (g)")}g\nFabricante: ISHII JEWELRY` + finalDescJoia;
         break;
       }
       case dados.categoria.includes("CORRENTES"): {
-        descricao = `Tipo de Elos: ${_("Tipo de Elos")}\nMetal: ${_("Metal")}\nTipo de Fecho: ${_("Tipo de Fecho")}\nComprimento: ${_("Comprimento")}cm\nEspessura: ${_("Espessura (mm)")}mm\nPeso Médio: ${_("Peso Médio (g)")}g\nModelo: ${_("Modelo")}\nFabricante: ISHII JEWELRY` + finalDescJoia;
+        descricao = `Tipo de Elos: ${_("Tipo de Elos")}\nMetal: ${_("Metal")}\nTipo de Fecho: ${_("Tipo de Fecho")}\nComprimento: ${_("Comprimento")}cm\nEspessura: ${_("Espessura (mm)")}mm\nPeso Aproximado: ${_("Peso Aproximado (g)")}g\nModelo: ${_("Modelo")}\nFabricante: ISHII JEWELRY` + finalDescJoia;
         break;
       }
     }

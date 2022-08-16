@@ -1,6 +1,6 @@
 javascript: console.clear(); /* GERA DESCRIÇÃO PELO FILTRO */
 
-console.log("VERSÃO: 2022 AGO 10");
+console.log("VERSÃO: 2022 AGO 16");
 
 buscarNoMundo = function() {
   document.querySelector("#productTabNavigation").querySelectorAll("a")[1].click();
@@ -33,6 +33,7 @@ buscarNoMundo = function() {
     }
   });
   filtro.categoria = document.querySelector("#ctl00_Conteudo_tbxIdCategoria_TxtNome").value.toUpperCase();
+  filtro.marca = document.querySelector("#ctl00_Conteudo_tbxIdMarca_rptArquivos_ctl01_lblNomeDadoAssociado").innerText.toUpperCase();
   console.table(filtro);
 
   return filtro;
@@ -58,22 +59,26 @@ gerarDescricao = function(dados) {
         break;
       }
       case dados.categoria.includes("BRINCO"): {
-        descricao = `Tamanho: ${_("Tamanho")}\nTipo: ${_("Tipo")}\nMetal: ${_("Metal")}\nAcabamento: ${_("Acabamento")}\nGema: ${_("Gema")}\nTipo de Fecho: ${_("Tipo de Fecho")}\nAltura: ${_("Altura (mm)")}mm\nEspessura: ${_("Espessura (mm)")}mm\nPeso Aproximado: ${_("Peso Aproximado (g)")}g (par)\nModelo: ${_("Modelo")}\nFabricante: ISHII JEWELRY` + finalDescJoia;
+        descricao = `Tamanho: ${_("Tamanho")}\nTipo: ${_("Tipo")}\nMetal: ${_("Metal")}\nAcabamento: ${_("Acabamento")}\nGema: ${_("Gema")}\nTipo de Fecho: ${_("Tipo de Fecho")}\nAltura: ${_("Altura (mm)")} mm\nEspessura: ${_("Espessura (mm)")} mm\nPeso Aproximado: ${_("Peso Aproximado (g)")} g (par)\nModelo: ${_("Modelo")}\nFabricante: ISHII JEWELRY` + finalDescJoia;
         break;
       }
       case dados.categoria.includes("PULSEIRA"): {
-        descricao = `Tamanho: ${_("Tamanho")}\nTipo de Elos: ${_("Tipo de Elos")}\nMetal: ${_("Metal")}\nAcabamento: ${_("Acabamento")}\nGema: ${_("Gema")}\nTipo de Fecho: ${_("Tipo de Fecho")}\nComprimento: ${_("Comprimento (mm)")}mm\nEspessura: ${_("Espessura (mm)")}mm\nPeso Aproximado: ${_("Peso Aproximado (g)")}g\nModelo: ${_("Modelo")}\nFabricante: ISHII JEWELRY` + finalDescJoia;
+        descricao = `Tamanho: ${_("Tamanho")}\nTipo de Elos: ${_("Tipo de Elos")}\nMetal: ${_("Metal")}\nAcabamento: ${_("Acabamento")}\nGema: ${_("Gema")}\nTipo de Fecho: ${_("Tipo de Fecho")}\nComprimento: ${_("Comprimento (mm)")} mm\nEspessura: ${_("Espessura (mm)")} mm\nPeso Aproximado: ${_("Peso Aproximado (g)")} g\nModelo: ${_("Modelo")}\nFabricante: ISHII JEWELRY` + finalDescJoia;
         break;
       }
       case dados.categoria.includes("PINGENTE"): {
-        descricao = `*Pingente não acompanha corrente\n\nMetal: ${_("Metal novo")}\nAcabamento: ${_("Acabamento")}\nGema: ${_("Gema")}\nAltura: ${_("Altura (mm)")} mm\nLargura: ${_("Largura (mm)")} mm\nEspessura: ${_("Espessura (mm)")} mm\nPeso Aproximado: ${_("Peso Aproximado (g)")}g\nFabricante: ISHII JEWELRY` + finalDescJoia;
+        descricao = `*Pingente não acompanha corrente\n\nMetal: ${_("Metal novo")}\nAcabamento: ${_("Acabamento")}\nGema: ${_("Gema")}\nAltura: ${_("Altura (mm)")} mm\nLargura: ${_("Largura (mm)")} mm\nEspessura: ${_("Espessura (mm)")} mm\nPeso Aproximado: ${_("Peso Aproximado (g)")} g\nFabricante: ISHII JEWELRY` + finalDescJoia;
       }
       case dados.categoria.includes("ANÉIS"): {
-        descricao = `Metal: ${_("Metal")}\nAcabamento: ${_("Acabamento")}\nGema: ${_("Gema")}\n\nTamanho: ${_("Tamanho")}\nLargura: ${_("Largura (mm)")} mm\nEspessura: ${_("Espessura (mm)")} mm\nPeso Aproximado: ${_("Peso Aproximado (g)")}g\nFabricante: ISHII JEWELRY` + finalDescJoia;
+        descricao = `Metal: ${_("Metal")}\nAcabamento: ${_("Acabamento")}\nGema: ${_("Gema")}\n\nTamanho: ${_("Tamanho")}\nLargura: ${_("Largura (mm)")} mm\nEspessura: ${_("Espessura (mm)")} mm\nPeso Aproximado: ${_("Peso Aproximado (g)")} g\nFabricante: ISHII JEWELRY` + finalDescJoia;
         break;
       }
       case dados.categoria.includes("CORRENTES"): {
-        descricao = `Tipo de Elos: ${_("Tipo de Elos")}\nMetal: ${_("Metal")}\nTipo de Fecho: ${_("Tipo de Fecho")}\nComprimento: ${_("Comprimento")}cm\nEspessura: ${_("Espessura (mm)")}mm\nPeso Aproximado: ${_("Peso Aproximado (g)")}g\nModelo: ${_("Modelo")}\nFabricante: ISHII JEWELRY` + finalDescJoia;
+        descricao = `Tipo de Elos: ${_("Tipo de Elos")}\nMetal: ${_("Metal")}\nTipo de Fecho: ${_("Tipo de Fecho")}\nComprimento: ${_("Comprimento")} cm\nEspessura: ${_("Espessura (mm)")} mm\nPeso Aproximado: ${_("Peso Aproximado (g)")} g\nModelo: ${_("Modelo")}\nFabricante: ISHII JEWELRY` + finalDescJoia;
+        break;
+      }
+      case dados.categoria.includes("ÓCULOS SOLAR"): {
+        descricao = `Óculos ${_("marca")} ${_("new Modelo")} novo e original.\nAcompanha embalagem oficial, certificado de garantia de 2 anos pelo fabricante e nota fiscal.\n\nArmação\nCor da armação: ${_("new Cor da armação")}\nMaterial da armação: ${_("new Material da armação")}\nFormato da armação: ${_("new Formato da armação")}\n\nLente\nCor da lente: ${_("new Cor da lente")}\nMaterial da lente: ${_("new Material da lente")}\nTratamento da lente: ${_("new Tratamento da lente")}\nPolarizado: ${_("new Polarizado")}\n\nMedidas\nTamanho: ${_("new Tamanho")}\nAltura : ${_("new Altura (mm)")} mm\nDiagonal : ${_("new Diagonal (mm)")} mm\nPonte : ${_("new Ponte (mm)")} mm\nHastes : ${_("new Hastes (mm)")} mm`;
         break;
       }
     }

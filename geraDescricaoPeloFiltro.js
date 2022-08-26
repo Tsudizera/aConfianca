@@ -78,7 +78,7 @@ gerarDescricao = function(dados) {
         break;
       }
       case dados.categoria.includes("ÓCULOS SOLAR"): {
-        descricao = `Óculos ${_("marca")} ${_("new Modelo")} novo e original.\nAcompanha embalagem oficial, certificado de garantia de 2 anos pelo fabricante e nota fiscal.\n\nArmação\nCor da armação: ${_("new Cor da armação")}\nMaterial da armação: ${_("new Material da armação")}\nFormato da armação: ${_("new Formato da armação")}\n\nLente\nCor da lente: ${_("new Cor da lente")}\nMaterial da lente: ${_("new Material da lente")}\nTratamento da lente: ${_("new Tratamento da lente")}\nPolarizado: ${_("new Polarizado")}\n\nMedidas\nTamanho: ${_("new Tamanho")}\nAltura : ${_("new Altura (mm)")} mm\nDiagonal : ${_("new Diagonal (mm)")} mm\nPonte : ${_("new Ponte (mm)")} mm\nHastes : ${_("new Hastes (mm)")} mm`;
+        descricao = `Óculos ${_("marca")} ${_("Modelo")} novo e original.\nAcompanha embalagem oficial, certificado de garantia de 2 anos pelo fabricante e nota fiscal.\n\nArmação\nCor da armação: ${_("Cor da armação")}\nMaterial da armação: ${_("Material da armação")}\nFormato da armação: ${_("Formato da armação")}\n\nLente\nCor da lente: ${_("Cor da lente")}\nMaterial da lente: ${_("Material da lente")}\nTratamento da lente: ${_("Tratamento da lente")}\nPolarizado: ${_("Polarizado")}\n\nMedidas\nTamanho: ${_("Tamanho")}\nAltura : ${_("Altura (mm)")} mm\nDiagonal : ${_("Diagonal (mm)")} mm\nPonte : ${_("Ponte (mm)")} mm\nHastes : ${_("Hastes (mm)")} mm`;
         break;
       }
     }

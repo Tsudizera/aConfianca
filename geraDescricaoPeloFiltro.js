@@ -1,6 +1,6 @@
 javascript: console.clear(); /* GERA DESCRIÇÃO PELO FILTRO */
 
-console.log("VERSÃO: 2022 AGO 26");
+console.log("VERSAO: 2022 OUT 07");
 
 buscarNoMundo = function() {
   document.querySelector("#productTabNavigation").querySelectorAll("a")[1].click();
@@ -8,17 +8,17 @@ buscarNoMundo = function() {
   document.querySelectorAll("#tabSpecifications>table>tbody>tr:not(.titSecao)").forEach(campo => {
     const key = campo.querySelector("th").innerText.split(":")[0]; /* key name ( sem ":" ) */
     switch (true) {
-      case campo.querySelectorAll("input[type='checkbox']").length > 0: /* checkbox */
+      case campo.querySelectorAll("[type='checkbox']").length > 0: /* checkbox */
         const boxs = [];
-        campo.querySelectorAll("input[type='checkbox']:checked+label").forEach(label => {
+        campo.querySelectorAll("[type='checkbox']:checked+label").forEach(label => {
           boxs.push(label.innerText)
         });
         filtro[key] = boxs.join(", ");
         break;
-      case campo.querySelectorAll("input[type='radio']").length > 0: /* radio */
-        filtro[key] = campo.querySelector("input[type='radio']:checked+label")?.innerText;
+      case campo.querySelectorAll("[type='radio']").length > 0: /* radio */
+        filtro[key] = campo.querySelector("[type='radio']:checked+label")?.innerText;
         break;
-      case campo.querySelectorAll("input[type='text']").length > 0: /* text */
+      case campo.querySelectorAll("[type='text']").length > 0: /* text */
         filtro[key] = campo.querySelector("input[type='text']").value;
         break;
       case campo.querySelectorAll("textarea").length > 0: /* textarea */
@@ -41,17 +41,19 @@ buscarNoMundo = function() {
 
 gerarDescricao = function(dados) {
   let descricao;
-  const deuruim = [];
+  /*const deuruim = [];*/
+  const problemas = {};
   const _ = function(key) {
-    if (dados[key] == null || !dados[key].length) {
-      console.warn(`Campo '${key}' está como ${dados[key]}!`);
-      deuruim.push(key);
+    if ( !(dados[key]?.length ) ) {
+      /*console.warn(`Campo '${key}' está como ${dados[key]}!`);
+      deuruim.push(key);*/
+      problemas[key] = dados[key];
     }
     return dados[key]
   };
 
   try {
-    const finalDescJoia = `\n\nAs imagens das Joias são ampliadas para melhor visualização, não correspondendo ao tamanho original.\n\nProduto de qualidade certificada pela AConfiança.\nGarantimos a procedência e autenticidade, bem como proteção contra defeito de fabricação por 3 meses. Não são cobertos os danos por quebras, perda de pedras, amassados, arranhões, desgastes, gravados e manchas por produtos químicos.\n\nRecomendações:\nEvite contato com produtos químicos: perfume, creme, pomada, cloro, mercúrio, detergente, etc.\nNão utilizar em tarefas manuais pesadas.\nAs Joias são artigos de valor. Conservadas de maneira apropriada, serão eternas.`;
+    const finalDescJoia = `\n\nAs imagens das Joias são ampliadas para melhor visualização, não correspondendo ao tamanho original.\n\nProduto de qualidade certificada pela AConfiança.\nGarantimos a procedência e autenticidade, bem como proteção contra defeito de fabricação por 3 meses. Não são cobertos os danos por quebras, perda de pedras, amassados, arranhões, desgastes, gravados e manchas por produtos químicos.\n\nRecomendações:\nEvite contato com produtos químicos: perfume, creme, pomada, cloro, mercúrio, detergente, etc.\nNão utilizar em tarefas manuais pesadas.\n\nAs Joias são artigos de valor. Conservadas de maneira apropriada, serão eternas.`;
     switch (true) {
       default: {
         const pressao = _("Pressão debaixo dágua (ATM)");
@@ -70,7 +72,7 @@ gerarDescricao = function(dados) {
         descricao = `*Pingente não acompanha corrente\n\nMetal: ${_("Metal novo")}\nAcabamento: ${_("Acabamento")}\nGema: ${_("Gema")}\nAltura: ${_("Altura (mm)")} mm\nLargura: ${_("Largura (mm)")} mm\nEspessura: ${_("Espessura (mm)")} mm\nPeso Aproximado: ${_("Peso Aproximado (g)")} g\nFabricante: ISHII JEWELRY` + finalDescJoia;
       }
       case dados.categoria.includes("ANÉIS"): {
-        descricao = `Metal: ${_("Metal")}\nAcabamento: ${_("Acabamento")}\nGema: ${_("Gema")}\n\nTamanho: ${_("Tamanho")}\nLargura: ${_("Largura (mm)")} mm\nEspessura: ${_("Espessura (mm)")} mm\nPeso Aproximado: ${_("Peso Aproximado (g)")} g\nFabricante: ISHII JEWELRY` + finalDescJoia;
+        descricao = `Metal: ${_("Metal")}\nAcabamento: ${_("Acabamento")}\nGema: ${_("Gema")}\n\nTamanho: ${_("Tamanho")}\nAro: ${_("Aro")}\nLargura: ${_("Largura (mm)")} mm\nEspessura: ${_("Espessura (mm)")} mm\nPeso Aproximado: ${_("Peso Aproximado (g)")} g\nFabricante: ISHII JEWELRY` + finalDescJoia;
         break;
       }
       case dados.categoria.includes("CORRENTES"): {
@@ -81,21 +83,35 @@ gerarDescricao = function(dados) {
         descricao = `Óculos ${_("marca")} ${_("Modelo")} novo e original.\nAcompanha embalagem oficial, certificado de garantia de 2 anos pelo fabricante e nota fiscal.\n\nArmação\nCor da armação: ${_("Cor da armação")}\nMaterial da armação: ${_("Material da armação")}\nFormato da armação: ${_("Formato da armação")}\n\nLente\nCor da lente: ${_("Cor da lente")}\nMaterial da lente: ${_("Material da lente")}\nTratamento da lente: ${_("Tratamento da lente")}\nPolarizado: ${_("Polarizado")}\n\nMedidas\nTamanho: ${_("Tamanho")}\nAltura : ${_("Altura (mm)")} mm\nDiagonal : ${_("Diagonal (mm)")} mm\nPonte : ${_("Ponte (mm)")} mm\nHastes : ${_("Hastes (mm)")} mm`;
         break;
       }
+      case dados.categoria.includes("ALIANÇAS"): {
+        descricao = `Categoria: ${_("Categoria")}\nModelo: ${_("Modelo")}\nMetal: ${_("Metal")}\nFormato interno: ${_("Formato interno")}\nFormato externo: ${_("Formato externo")}\nAcabamento: ${_("Acabamento")}\nGema: ${_("Gema")}\n\nLargura: ${_("Largura (mm)")} mm\nEspessura: ${_("Espessura (mm)")} mm\nPeso Aproximado: ${_("Peso Aproximado (g)")} g\nFabricante: ISHII JEWELRY` + finalDescJoia;
+        break;
+      }
     }
-    if (deuruim.length) {
-      alert(`${deuruim.length} CAMPO PENDENTE!\n\n${deuruim.join(", ")}`)
-    } else colarNoTextBox: {
+
+    let campos = Object.keys(problemas);
+    if (/*deuruim.length || */campos.length) {
+      /*alert(`${deuruim.length} CAMPO PENDENTE!\n\n${deuruim.join(", ")}`);*/
+      alert(`${campos.length} CAMPO PENDENTE!\n\n${campos.join(", ")}`);
+      console.warn(`POBREMA`);
+      console.table(problemas);
+      return;
+    }
+    
+    colarNoTextBox: {
       document.querySelector("#productTabNavigation").querySelectorAll("a")[0].click();
       const textAreaElement = document.querySelector("#ctl00_Conteudo_tbxTexto_txtId");
       textAreaElement.value = descricao;
-      textAreaElement.style.width = "600px",
+      textAreaElement.style.width = "600px";
       textAreaElement.style.height = "0px";
       textAreaElement.style.height = textAreaElement.scrollHeight + 5 + "px";
       console.log('%cXUXU BELEZA!', 'font-size: 50px; color: lime');
     }
+    
   } catch (err) {
     alert(err)
   }
+  
 };
 
 gerarDescricao(buscarNoMundo());

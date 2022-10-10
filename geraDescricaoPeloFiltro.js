@@ -1,6 +1,6 @@
 javascript: console.clear(); /* GERA DESCRIÇÃO PELO FILTRO */
 
-console.log("VERSAO: 2022 OUT 07");
+console.log("VERSAO: 2022 OUT 10");
 
 buscarNoMundo = function() {
   document.querySelector("#productTabNavigation").querySelectorAll("a")[1].click();

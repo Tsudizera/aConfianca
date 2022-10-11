@@ -1,6 +1,6 @@
 javascript: console.clear(); /* GERA DESCRIÇÃO PELO FILTRO */
 
-console.log("VERSAO: 2022 OUT 10");
+console.log("VERSAO: 2022 OUT 11");
 
 buscarNoMundo = function() {
   document.querySelector("#productTabNavigation").querySelectorAll("a")[1].click();
@@ -34,19 +34,16 @@ buscarNoMundo = function() {
   });
   filtro.categoria = document.querySelector("#ctl00_Conteudo_tbxIdCategoria_TxtNome").value.toUpperCase();
   filtro.marca = document.querySelector("#ctl00_Conteudo_tbxIdMarca_rptArquivos_ctl01_lblNomeDadoAssociado").innerText.toUpperCase();
-  console.table(filtro);
+  console.log(filtro);
 
   return filtro;
 };
 
 gerarDescricao = function(dados) {
   let descricao;
-  /*const deuruim = [];*/
   const problemas = {};
   const _ = function(key) {
     if ( !(dados[key]?.length ) ) {
-      /*console.warn(`Campo '${key}' está como ${dados[key]}!`);
-      deuruim.push(key);*/
       problemas[key] = dados[key];
     }
     return dados[key]
@@ -90,11 +87,10 @@ gerarDescricao = function(dados) {
     }
 
     let campos = Object.keys(problemas);
-    if (/*deuruim.length || */campos.length) {
-      /*alert(`${deuruim.length} CAMPO PENDENTE!\n\n${deuruim.join(", ")}`);*/
-      alert(`${campos.length} CAMPO PENDENTE!\n\n${campos.join(", ")}`);
+    if ( campos.length ) {
+      alert(`${campos.length} CAMPO PENDENTE!\n\n${campos.join(",\n")}`);
       console.warn(`POBREMA`);
-      console.table(problemas);
+      console.warn(problemas);
       return;
     }
     

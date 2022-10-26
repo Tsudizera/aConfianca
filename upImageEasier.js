@@ -133,7 +133,7 @@ i.onchange = function(e) {
   for (let arq of arquivos) {
     let leitor = new FileReader();
     leitor.onload = function() {
-      const bloco = document.importNode(document.querySelector("template").content.querySelector("figure"), true);
+      const bloco = myWindow.document.importNode(myWindow.document.querySelector("template").content.querySelector("figure"), true);
       bloco.querySelector("img").src = leitor.result;
       bloco.querySelector("figcaption").innerHTML = arq.name;
       

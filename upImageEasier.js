@@ -9,6 +9,7 @@ myWindow.document.write(`
   body {
     background-color: lightgray;
     display: grid;
+    align-content: start;
     gap: 16px;
   }
 

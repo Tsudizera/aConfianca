@@ -1,5 +1,5 @@
 javascript: /* facilita upload de imagem na vtex */
-myWindow = window//.open("", "", `top=100,left=100,,width=${screen.width/2-100},height=${screen.height-300}`);
+myWindow = window.open("", "", `top=100,left=100,,width=${screen.width/2-100},height=${screen.height-300}`);
 
 myWindow.document.write(`
 
@@ -8,51 +8,124 @@ myWindow.document.write(`
 <style>
   body {
     background-color: lightgray;
+    display: grid;
+    gap: 16px;
   }
+
   button {
-    font-size: 32px;
+    font-size: 1.5rem;
     width: 100%;
     padding: 1em;
     background: #4c4;
     color: white;
     border: none;
     display: block;
+    border-radius: 8px;
   }
-  [type='file'] {
-    background: #47f;
+
+  #dropFileArea {
+    font-size: 2rem;
     width: 100%;
     height: 256px;
-    color: white;
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+    color: snow;
+    font-family: monospace;
   }
+
+  #dropFileArea [type='file'] {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    z-index: 1;
+    cursor: pointer;
+  }
+
+  #dropFileArea:after,
+  #dropFileArea:before {
+    display: grid;
+    place-items: center;
+    position: absolute;
+    inset: 0;
+    transition: inset .25s;
+  }
+
+  #dropFileArea:after {
+    content: "⇪";
+    font-size: 4em;
+    background-color: RoyalBlue;
+  }
+
+  /* cool transition */
+  #dropFileArea:before {
+    content: "UPLOAD LOCAL FILE";
+    background-color: CornflowerBlue;
+  }
+
+  #dropFileArea:hover:after {
+    top: -100%;
+    bottom: 100%;
+  }
+
+  #dropFileArea:not(:hover):before {
+    top: 100%;
+    bottom: -100%;
+  }
+
+  figure {
+    font-size: 1.5rem;
+    margin: 0;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    box-shadow: 0 3px 8px #0003;
+    border-radius: 4px;
+    place-items: center;
+    padding: 8px;
+    gap: 16px;
+    background: whitesmoke;
+
+  }
+
   img {
     display: block;
-    width: 128px;
-    height: 128px;
+    width: 80px;
+    height: 80px;
     object-fit: scale-down;
-    outline: solid 2px;
-    background-color: crimson;
-    border-radius: 4px;
+    background-color: black;
   }
-  div {
+
+  .container {
     display: grid;
     gap: 8px;
-    padding-block: 8px;
   }
+
 </style>
 
-<button>Enviar</button>
-<input type='file' multiple>
-<div></div>
-<ul>
-  <li>clique e arraste para reordenar</li>
-  <li>clique com o botão direito do mouse para remover</li>
-</ul>
+<body>
+  <div id='dropFileArea'>
+    <input type='file' multiple>
+  </div>
+  <div class='container'></div>
+  <button>Enviar</button>
+  <ul>
+    <li>clique e arraste para reordenar</li>
+    <li>clique com o botão direito do mouse para remover</li>
+  </ul>
+</body>
+
+<template>
+  <figure draggable="true">
+    <img class="conteudo">
+    <figcaption></figcaption>
+  </figure>
+</template>
 
 `);
 
 botao = myWindow.document.querySelector('button');
 i = myWindow.document.querySelector('input');
-container = myWindow.document.querySelector("div");
+container = myWindow.document.querySelector(".container");
 
 
 i.onchange = function(e) {
@@ -60,10 +133,10 @@ i.onchange = function(e) {
   for (let arq of arquivos) {
     let leitor = new FileReader();
     leitor.onload = function() {
-      let bloco = document.createElement("img");
-      bloco.title = bloco.alt = arq.name;
-      bloco.src = leitor.result;
-      bloco.draggable = true;
+      const bloco = document.importNode(document.querySelector("template").content.querySelector("figure"), true);
+      bloco.querySelector("img").src = leitor.result;
+      bloco.querySelector("figcaption").innerHTML = arq.name;
+      
       bloco.ondrag = function(e) {
         let deQuemTenhoQueBotarAntes = myWindow.document.elementFromPoint(event.clientX, event.clientY);
         if (this.parentNode === deQuemTenhoQueBotarAntes.parentNode) {
@@ -97,8 +170,8 @@ botao.onclick = function() {
   janelinha.height = "100%";
   janelinha.onload = function() {
     if (container.children.length) {
-      let dataurl = container.children[0].src;
-      let filename = container.children[0].alt;
+      let dataurl = container.children[0].querySelector("img").src;
+      let filename = container.children[0].querySelector("figcaption").innerHTML;
       container.children[0].remove();
       let arr = dataurl.split(',');
       let mime = arr[0].match(/:(.*?);/)[1];

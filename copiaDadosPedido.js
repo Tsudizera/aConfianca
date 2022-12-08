@@ -4,7 +4,7 @@
 /* (!) Parcial! Pendencias da VIA e MLFULL */
 
 console.clear();
-console.log("VERSÃO: 2022 JUL 29");
+console.log("VERSÃO: 2022 DEZ 08");
 var $ = (q, parent = document) => parent.querySelector(q);
 var $$ = (q, parent = document) => [...parent.querySelectorAll(q)];
 
@@ -139,14 +139,14 @@ try {
       const pedido = $("h1", doc).innerText.split(" (")[0];
       const nome = $('[class^=vtex-profile] dd:nth-child(1)', doc).innerText;
       const cpf = $('[class^=vtex-profile] dd:nth-child(2)', doc).innerText.split("CPF ")[1];
-      const itens = $$('[class=admin-orders-am8j60] [class=admin-orders-k008qs]', doc);
+      const itens = $$('[data-print="oc_center-holder-parent"] .admin-orders-am8j60 [class=admin-orders-k008qs]', doc);
 
       const listaItens = [];
       for (const i of itens) {
         const obj = {
           modelo: $("a", i).innerText,
           sku: $(".admin-orders-1fja3tm .admin-orders-1qjm10e .admin-orders-0:first-child", i).innerText.split("(")[1],
-          qtd: $(":scope > div:nth-child(3)", i).innerText
+          qtd: $(":scope > .admin-orders-hpny41 .admin-orders-1qjm10e", itens[0]).innerText
         };
         listaItens.push(obj)
       }

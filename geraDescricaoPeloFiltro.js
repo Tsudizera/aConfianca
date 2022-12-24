@@ -1,6 +1,6 @@
 javascript: console.clear(); /* GERA DESCRIÇÃO PELO FILTRO */
 
-console.log("VERSAO: 2022 NOV 10");
+console.log("VERSAO: 2022 DEZ 24");
 
 buscarNoMundo = function() {
   document.querySelector("#productTabNavigation").querySelectorAll("a")[1].click();
@@ -101,6 +101,7 @@ gerarDescricao = function(dados) {
       textAreaElement.style.width = "600px";
       textAreaElement.style.height = "0px";
       textAreaElement.style.height = textAreaElement.scrollHeight + 5 + "px";
+      document.querySelector('#ctl00_Conteudo_tbxMetaTagDescription_txtId').value = '';
       console.log('%cXUXU BELEZA!', 'font-size: 50px; color: lime');
     }
     

@@ -4,7 +4,7 @@
 /* (!) Parcial! Pendencias da VIA e MLFULL */
 
 console.clear();
-console.log("VERSÃO: 2022 DEZ 08");
+console.log("VERSÃO: 2023 JAN 11");
 var $ = (q, parent = document) => parent.querySelector(q);
 var $$ = (q, parent = document) => [...parent.querySelectorAll(q)];
 

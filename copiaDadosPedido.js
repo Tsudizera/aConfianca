@@ -79,7 +79,7 @@ try {
     case (link.includes("mercadolivre.com.br/vendas") && !link.includes("vendas/lista")): {
       console.log("ML");
       const pedido = $$(".sc-text")[0].innerText.match(/#\d*/g)[0].replace(/#/g, "");
-      const cpf = $("div.sc-buyer__content p").innerText.split(" CPF ")[1];
+      const cpf = $("div.sc-buyer__content").innerText.split(" CPF ")[1];
       const nome = $("div.sc-buyer__content b").innerText;
       
       const listaItens = [];

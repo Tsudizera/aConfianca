@@ -4,7 +4,7 @@
 /* (!) Parcial! Pendencias da VIA e MLFULL */
 
 console.clear();
-console.log("VERSÃO: 2023 JAN 13");
+console.log("VERSÃO: 2023 FEV 07");
 var $ = (q, parent = document) => parent.querySelector(q);
 var $$ = (q, parent = document) => [...parent.querySelectorAll(q)];
 
@@ -102,6 +102,7 @@ try {
       break;
     }
 
+    case link.includes("amazon.com/orders-v3/order"):
     case link.includes("amazon.com.br/orders-v3/order"): {
       console.log("AMZ");
       const pedido = $("span[data-test-id=order-id-value]").innerText;

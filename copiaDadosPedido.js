@@ -4,7 +4,7 @@
 /* (!) Parcial! Pendencias da VIA e MLFULL */
 
 console.clear();
-console.log("VERSÃO: 2023 FEV 07");
+console.log("VERSÃO: 2023 FEV 08");
 var $ = (q, parent = document) => parent.querySelector(q);
 var $$ = (q, parent = document) => [...parent.querySelectorAll(q)];
 
@@ -19,7 +19,8 @@ function ctrl_C(pedido, mkt, nome, cpf, listaItens) {
   const qtd = listaItens.reduce((acc, maluco) => [...acc, maluco.qtd.replace(/\D/g, "")], []).join("\n");
 
   const el = document.createElement('textarea');
-  console.log(el.value = `${dia}\t${pedido}\t${mkt}\t${nome}\t${cpf}\t"${modelo}"\t"${sku}"\t"${qtd}"`);
+  el.value = `${dia}\t${pedido}\t${mkt}\t${nome}\t${cpf}\t"${modelo}"\t"${sku}"\t"${qtd}"`;
+  console.log(el.value);
   document.body.appendChild(el);
   el.select();
   document.execCommand('copy');
@@ -88,7 +89,7 @@ try {
         console.log("ML FULL");
         console.warn('ITENS PENDENTE! Não sei como fica o html quando compra mais que 1 item diferente. Se pá é igual ao ML normal.');
       } else {
-        const itens = $$("div.sc-row-content.sc-row-content__expanded.sc-row-content__with-border>div");
+        const itens = $$(".sc-product");
         for (const i of itens) {
           const obj = {
             modelo: $("div.sc-title-subtitle-action__label", i).innerText,

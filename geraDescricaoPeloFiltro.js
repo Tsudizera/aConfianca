@@ -1,6 +1,6 @@
 javascript: console.clear(); /* GERA DESCRIÇÃO PELO FILTRO */
 
-console.log("VERSAO: 2022 DEZ 24");
+console.log("VERSAO: 2023 FEV 09");
 
 buscarNoMundo = function() {
   document.querySelector("#productTabNavigation").querySelectorAll("a")[1].click();
@@ -55,6 +55,10 @@ gerarDescricao = function(dados) {
       default: {
         const pressao = _("Pressão debaixo dágua (ATM)");
         descricao = `Relógio ${_("categoria")} ${_("Modelo")} NOVO e ORlGlNAL.\nAcompanha embalagem oficial, certificado de garantia de 1 ano pelo fabricante, manual de instruções e N0TA FlSCAL.\n\nModelo: ${_("Modelo")}\nGênero: ${_("Gênero")}\nGarantia: 12 meses\n\nCaracterísticas\nFormato do Relógio: ${_("Formato do Relógio")}\nComposição do Vidro: ${_("Composição do Vidro")}\nMaterial da Caixa: ${_("Material da Caixa")}\nCor da Caixa: ${_("Cor da Caixa")}\nCor do mostrador: ${_("Cor do Mostrador")}\nMaterial da Pulseira: ${_("Material da Pulseira")}\nCor da Pulseira: ${_("Cor da Pulseira")}\nMecanismo: ${_("Mecanismo")}\n\nMedidas\nLargura da Caixa: ${_("Largura da Caixa (mm)")} mm\nEspessura da Caixa: ${_("Espessura da Caixa (mm)")} mm\n\nResistência à Água\nPressão: ${pressao} ATMs\nResistência a respingos: Sim\nPrática de natação: ${pressao>=5?"Sim":"Não recomendado"}\nPrática de mergulho: ${pressao>=10?"Sim":"Não recomendado"}\nNão recomendado utilizar em água salgada ou durante o banho quente\n(exceto relógios apropriados para mergulho profissional)${dados["Funções do Relógio"]?.length ? `\n\nFunções do Relógio\n${dados["Funções do Relógio"]}`:""}`;
+        break;
+      }
+      case dados.categoria.includes("RELÓGIO DE PAREDE"): {
+        descricao = `Relógio de Parede ${_("marca")} NOVO e ORlGlNAL.\nAcompanha embalagem oficial, certificado de garantia de 1 ano pelo fabricante, manual de instruções e N0TA FlSCAL.\n\nDimensões\nAltura: ${_("Altura")}cm\nLargura: ${_("Largura")}cm\nEspessura: ${_("Espessura")}cm\n\nFunções do Relógio\n${_("Funções")}\n\nMaterial\nAcabamento: ${_("Acabamento")}\nVisor: ${_("Visor")}\n\nBateria: ${_("Bateria (tipo)")}`;
         break;
       }
       case dados.categoria.includes("BRINCO"): {

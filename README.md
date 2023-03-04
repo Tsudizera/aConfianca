@@ -1,17 +1,21 @@
-# Macros úteis para a loja!
+# Bookmarklets úteis para a loja!
 
-#### Propósito de usar no hit-gub:
-- Fácil de modificar
-- Atualização automática para todo mundo
-- Histórico de versão fica salvo (?)
+>Um bookmarklet é um pequeno programa em JavaScript que é armazenado como uma URL nos Favoritos dos mais populares navegadores
 
-#### Como usar:
+Basicamente dá para agilizar tarefas repetitivas que fazemos no navegador.
+
+## Propósito de usar no hit-gub:
+- É mais fácil de modificar
+- Modificações atualiza automaticamente para todo mundo
+- Salva backup das versões anteriores
+
+## Como usar:
 Adicione a URL abaixo aos favoritos:
+
 ```js
 javascript:void(document.body.appendChild(elemento=document.createElement('script')),elemento.src='https://tsudizera.github.io/aConfianca/[nome_do_script_desejado].js');
 ```
-Substitua `[nome_do_script]`.
 
-Toda vez que desejar usar o script, basta clicar no favorito.
+Substitua `[nome_do_script_desejado]`.
 
-![SSAÊ](https://i.pinimg.com/originals/92/19/a5/9219a5e4424f3c097846e0ab41b510cb.jpg)
+Toda vez que desejar usar o script, basta clicar no favorito. ⭐

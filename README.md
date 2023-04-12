@@ -1,6 +1,12 @@
 # Bookmarklets úteis para a loja!
 
->Um bookmarklet é um pequeno programa em JavaScript que é armazenado como uma URL nos Favoritos dos mais populares navegadores
+>Um bookmarklet é um pequeno programa em JavaScript que é armazenado como uma URL nos 'Favoritos' dos navegadores.
+>
+>Bookmarklets podem ser salvos e utilizados como se fossem 'Favoritos' comuns.
+>
+>Assim, são simples ferramentas de "um clique" que podem adicionar muitas funções para o navegador.
+
+Fonte: [Wikipedia](https://pt.wikipedia.org/wiki/Bookmarklet)
 
 Basicamente dá para agilizar tarefas repetitivas que fazemos no navegador.
 
@@ -13,7 +19,12 @@ Basicamente dá para agilizar tarefas repetitivas que fazemos no navegador.
 Adicione a URL abaixo aos favoritos:
 
 ```js
-javascript:void(document.body.appendChild(elemento=document.createElement('script')),elemento.src='https://tsudizera.github.io/aConfianca/[nome_do_script_desejado].js');
+javascript: {
+  const s = document.createElement('script');
+  document.body.appendChild(s);
+  s.src = 'https://tsudizera.github.io/aConfianca/[nome_do_script_desejado].js';
+  null;
+}
 ```
 
 Substitua `[nome_do_script_desejado]`.

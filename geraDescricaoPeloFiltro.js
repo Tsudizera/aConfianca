@@ -1,6 +1,6 @@
 javascript: console.clear(); /* GERA DESCRIÇÃO PELO FILTRO */
 
-console.log("VERSAO: 2023 FEV 09");
+console.log("VERSAO: 2023 ABR 24");
 
 buscarNoMundo = function() {
   document.querySelector("#productTabNavigation").querySelectorAll("a")[1].click();
@@ -81,7 +81,7 @@ gerarDescricao = function(dados) {
         break;
       }
       case dados.categoria.includes("ÓCULOS SOLAR"): {
-        descricao = `Óculos ${_("marca")} ${_("Modelo")} NOVO e ORlGlNAL.\nAcompanha embalagem oficial, certificado de garantia de 2 anos pelo fabricante e N0TA FlSCAL.\n\nArmação\nCor da armação: ${_("Cor da armação")}\nMaterial da armação: ${_("Material da armação")}\nFormato da armação: ${_("Formato da armação")}\n\nLente\nCor da lente: ${_("Cor da lente")}\nMaterial da lente: ${_("Material da lente")}\nTratamento da lente: ${_("Tratamento da lente")}\nPolarizado: ${_("Polarizado")}\n\nMedidas\nTamanho: ${_("Tamanho")}\nAltura : ${_("Altura (mm)")} mm\nDiagonal : ${_("Diagonal (mm)")} mm\nPonte : ${_("Ponte (mm)")} mm\nHastes : ${_("Hastes (mm)")} mm`;
+        descricao = `Óculos ${_("marca")} ${_("Modelo")} NOVO e ORlGlNAL.\nAcompanha embalagem oficial, certificado de garantia de 2 anos pelo fabricante e N0TA FlSCAL.\n\nArmação\nCor da armação: ${_("Cor da armação")}\nMaterial da armação: ${_("Material da armação")}\nFormato da armação: ${_("Formato da armação")}\n\nLente\nCor da lente: ${_("Cor da lente")}\nMaterial da lente: ${_("Material da lente")}\nTratamento da lente: ${_("Tratamento da lente")}\nPolarizado: ${_("Polarizado")}\n\nMedidas\nTamanho: ${_("Tamanho")}\nAltura : ${_("Altura (mm)")} mm\nDiagonal : ${_("Diâmetro Efetivo (mm)")} mm\nPonte : ${_("Ponte (mm)")} mm\nHastes : ${_("Hastes (mm)")} mm`;
         break;
       }
       case dados.categoria.includes("ALIANÇAS"): {

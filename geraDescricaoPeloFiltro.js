@@ -1,6 +1,6 @@
 javascript: console.clear(); /* GERA DESCRIÇÃO PELO FILTRO */
 
-console.log("VERSAO: 2023 ABR 24");
+console.log("VERSAO: 2023 MAI 03");
 
 buscarNoMundo = function() {
   document.querySelector("#productTabNavigation").querySelectorAll("a")[1].click();
@@ -29,7 +29,7 @@ buscarNoMundo = function() {
         filtro[key] = selectElement.options[selectElement.selectedIndex].text;
         break;
       default:
-        alert("Estranho...\nNão era suposto que você recebece essa mensagem!\nAvisa lá o Tsudi!");
+        alert("Não é suposto que você receba essa mensagem!\nAvisa lá o Tsudi!");
     }
   });
   filtro.categoria = document.querySelector("#ctl00_Conteudo_tbxIdCategoria_TxtNome").value.toUpperCase();
@@ -62,7 +62,7 @@ gerarDescricao = function(dados) {
         break;
       }
       case dados.categoria.includes("BRINCO"): {
-        descricao = `Tamanho: ${_("Tamanho")}\nTipo: ${_("Tipo")}\nMetal: ${_("Metal")}\nAcabamento: ${_("Acabamento")}\nGema: ${_("Gema")}\nTipo de Fecho: ${_("Tipo de Fecho")}\nAltura: ${_("Altura (mm)")} mm\nEspessura: ${_("Espessura (mm)")} mm\nPeso Aproximado: ${_("Peso Aproximado (g)")} g (par)\nModelo: ${_("Modelo")}\nFabricante: ISHII JEWELRY` + finalDescJoia;
+        descricao = `Tamanho: ${_("Tamanho")}\nTipo: ${_("Tipo")}\nMetal: ${_("Metal")}\nAcabamento: ${_("Acabamento")}\nGema: ${_("Gema")}\nTipo de Fecho: ${_("Tipo de Fecho")}\nAltura: ${_("Altura (mm)")} mm\nLargura: ${_("Largura (mm)")} mm\nEspessura: ${_("Espessura (mm)")} mm\nPeso Aproximado: ${_("Peso Aproximado (g)")} g (par)\nModelo: ${_("Modelo")}\nFabricante: ISHII JEWELRY` + finalDescJoia;
         break;
       }
       case dados.categoria.includes("PULSEIRA"): {

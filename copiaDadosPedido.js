@@ -138,7 +138,7 @@ try {
       const doc = $("iframe", top.document).contentWindow.document;
       const pedido = $("h1", doc).innerText.split(" (")[0];
       const nome = $('[class^=vtex-profile] dd:nth-child(1)', doc).innerText;
-      const cpf = $('[class^=vtex-profile] dd:nth-child(2)', doc).innerText.split("cpf ")[1];
+      const cpf = $('[class^=vtex-profile] dd:nth-child(2)', doc).innerText;
       const itens = $$('[data-print="oc_center-holder-parent"] .admin-orders-am8j60 [class=admin-orders-k008qs]', doc);
 
       const listaItens = [];

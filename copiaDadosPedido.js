@@ -3,22 +3,22 @@
 /* (!) Parcial! Pendencias da VIA e MLFULL */
 
 console.clear();
-console.log("VERSÃO: 2023-08-30");
-var $ = (q, parent = document) => parent.querySelector(q);
-var $$ = (q, parent = document) => [...parent.querySelectorAll(q)];
+console.log("VERSÃO: 2023-10-24");
+var $ = (q, p = document) => p.querySelector(q);
+var $$ = (q, p = document) => [...p.querySelectorAll(q)];
 
 
 function ctrl_C(pedido, mkt, nome, cpf, listaItens) {
   const agora = new Date();
-  const dia = agora.getFullYear() + '-' + ("0" + (agora.getMonth() + 1)).slice(-2) + '-' + ("0" + agora.getDate()).slice(-2);
+  const data = `${agora.getFullYear()}-${("0" + (agora.getMonth() + 1)).slice(-2)}-${("0" + agora.getDate()).slice(-2)}`;
   pedido = `=HIPERLINK("${window.location.href}";"${pedido}")`;
 
-  const modelo = listaItens.reduce((acc, maluco) => [...acc, maluco.modelo], []).join("\n");
-  const sku = listaItens.reduce((acc, maluco) => [...acc, maluco.sku.replace(/\D/g, "")], []).join("\n");
-  const qtd = listaItens.reduce((acc, maluco) => [...acc, maluco.qtd.replace(/\D/g, "")], []).join("\n");
+  const modelo = listaItens.reduce((acc, { modelo }) => [...acc, modelo], []).join("\n");
+  const sku = listaItens.reduce((acc, { sku }) => [...acc, sku.replace(/\D/g, "")], []).join("\n");
+  const qtd = listaItens.reduce((acc, { qtd }) => [...acc, qtd.replace(/\D/g, "")], []).join("\n");
 
   const $textarea = document.createElement('textarea');
-  $textarea.value = `${dia}\t${pedido}\t${mkt}\t${nome}\t${cpf}\t"${modelo}"\t"${sku}"\t"${qtd}"`;
+  $textarea.value = `${data}\t${pedido}\t${mkt}\t${nome}\t${cpf}\t"${modelo}"\t"${sku}"\t"${qtd}"`;
   console.log($textarea.value);
   document.body.appendChild($textarea);
   $textarea.select();
@@ -28,7 +28,7 @@ function ctrl_C(pedido, mkt, nome, cpf, listaItens) {
 
 
 try {
-  link = window.location.href;
+  const link = window.location.href;
   switch (true) {
 
     case link.includes("integracommerce.com.br/Order"): {
@@ -55,8 +55,8 @@ try {
     case link.includes("americanasmarketplace.com.br/v3/pedidos/detalhes"): {
       console.log("B2W");
       const pedido = $(".timeline-delivery .p14").innerText;
-      const nome = $("span", $$('section[_ngcontent-c22] .card .col-md-12')[1]).innerText;
-      const cpf = $('span', $$('section[_ngcontent-c22] .card .col-md-4')[0]).innerText;
+      const nome = $("span", $$('section[_ngcontent-c21] .card .col-md-12')[1]).innerText;
+      const cpf = $('span', $$('section[_ngcontent-c21] .card .col-md-4')[0]).innerText;
 
       const item = $$("div.card")[3];
       const listaModelo = $$(".p14-bold", item);
@@ -127,8 +127,17 @@ try {
       const pedido = $("b.text-green").innerText;
       const nome = $$("#gestao app-order-management-data-details label + span")[0].innerText;
       const cpf = $$("#gestao app-order-management-data-details label + span")[2].innerText;
-      /* PENDENTE! Não sei como fica o html quando compra mais que 1 item diferente */
       const listaItens = [];
+      /* TODO! Não sei como fica o html quando compra mais que 1 item diferente. talvez apenas apareça outra tr */
+      alert('Conferir manualmente se pedido possui outros items!')
+      const $$sePaQueCadaItemVaiEstarEmUmaRow = $$('table tbody tr');
+      for (const $row of $$sePaQueCadaItemVaiEstarEmUmaRow) {
+        listaItens.push({
+          modelo: $$("td", $row)[1].innerText,
+          sku: $$("td", $row)[3].innerText,
+          qtd: $$("td", $row)[4].innerText,
+        })
+      }
       ctrl_C(pedido, "VIA", nome, cpf, listaItens);
       break;
     }

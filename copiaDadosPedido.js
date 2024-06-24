@@ -3,7 +3,7 @@
 /* (!) Parcial! Pendencias da VIA e MLFULL */
 
 console.clear();
-console.log("VERSÃO: 2023-10-24");
+console.log("VERSÃO: 2024-06-24");
 var $ = (q, p = document) => p.querySelector(q);
 var $$ = (q, p = document) => [...p.querySelectorAll(q)];
 
@@ -145,20 +145,19 @@ try {
     case link.includes("aconfianca.myvtex.com/admin/orders/"): {
       console.log("SITE");
       const doc = $("iframe", top.document).contentWindow.document;
+
       const pedido = $("h1", doc).innerText.split(" (")[0];
       const nome = $('[class^=vtex-profile] dd:nth-child(1)', doc).innerText;
       const cpf = $('[class^=vtex-profile] dd:nth-child(2)', doc).innerText;
-      const itens = $$('[data-print="oc_center-holder-parent"] .admin-orders-am8j60 [class=admin-orders-k008qs]', doc);
 
-      const listaItens = [];
-      for (const i of itens) {
-        const obj = {
-          modelo: $("a", i).innerText,
-          sku: $(".admin-orders-1fja3tm .admin-orders-1qjm10e .admin-orders-0:first-child", i).innerText.split("(")[1],
-          qtd: $(":scope > .admin-orders-hpny41 .admin-orders-1qjm10e", itens[0]).innerText
-        };
-        listaItens.push(obj)
-      }
+      const listaItens = $$('.admin-orders-7ebogl', doc).map(item => {
+        return {
+          modelo: $("a", item).innerText,
+          sku: $(".admin-orders-i77yd4 .admin-orders-k008qs", item).innerText,
+          qtd: $(".admin-orders-r54c6w .admin-orders-b8crlr", item).innerText,
+        }
+      })
+
       ctrl_C(pedido, "SITE", nome, cpf, listaItens);
       break;
     }

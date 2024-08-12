@@ -1,6 +1,5 @@
 /*javascript:
-/* copia dados pedidos (DATA/PEDIDO/MKT/NOME/CPF[/MOD/SKU/QTD]) DA (MAGALU/B2W/ML/MLFULL(!)/AMZ/VIA(!)/SITE) */
-/* (!) Parcial! Pendencias da VIA e MLFULL */
+/* copia dados pedidos (DATA/PEDIDO/MKT/NOME/CPF[/MOD/SKU/QTD]) DA (MAGALU/B2W/ML/MLFULL/AMZ/VIA/SITE) */
 
 console.clear();
 console.log("VERSÃO: 2024-06-24");
@@ -127,17 +126,11 @@ try {
       const pedido = $("b.text-green").innerText;
       const nome = $$("#gestao app-order-management-data-details label + span")[0].innerText;
       const cpf = $$("#gestao app-order-management-data-details label + span")[2].innerText;
-      const listaItens = [];
-      /* TODO! Não sei como fica o html quando compra mais que 1 item diferente. talvez apenas apareça outra tr */
-      alert('Conferir manualmente se pedido possui outros items!')
-      const $$sePaQueCadaItemVaiEstarEmUmaRow = $$('table tbody tr');
-      for (const $row of $$sePaQueCadaItemVaiEstarEmUmaRow) {
-        listaItens.push({
-          modelo: $$("td", $row)[1].innerText,
-          sku: $$("td", $row)[3].innerText,
-          qtd: $$("td", $row)[4].innerText,
-        })
-      }
+      const listaItens = $$('table tbody tr').map($row => ({
+        modelo: $$("td", $row)[1].innerText,
+        sku: $$("td", $row)[3].innerText,
+        qtd: $$("td", $row)[4].innerText,
+      }));
       ctrl_C(pedido, "VIA", nome, cpf, listaItens);
       break;
     }

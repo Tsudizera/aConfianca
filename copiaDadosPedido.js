@@ -2,7 +2,7 @@
 /* copia dados pedidos (DATA/PEDIDO/MKT/NOME/CPF[/MOD/SKU/QTD]) DA (MAGALU/B2W/ML/MLFULL/AMZ/VIA/SITE) */
 
 console.clear();
-console.log("VERSÃO: 2024-06-24");
+console.log("VERSÃO: 2024-09-18");
 var $ = (q, p = document) => p.querySelector(q);
 var $$ = (q, p = document) => [...p.querySelectorAll(q)];
 
@@ -143,13 +143,13 @@ try {
       const nome = $('[class^=vtex-profile] dd:nth-child(1)', doc).innerText;
       const cpf = $('[class^=vtex-profile] dd:nth-child(2)', doc).innerText;
 
-      const listaItens = $$('.admin-orders-7ebogl', doc).map(item => {
-        return {
-          modelo: $("a", item).innerText,
-          sku: $(".admin-orders-i77yd4 .admin-orders-k008qs", item).innerText,
-          qtd: $(".admin-orders-r54c6w .admin-orders-b8crlr", item).innerText,
-        }
-      })
+      const $itensContainer = $$('[aria-label="Todos os produtos"] [role="region"] > .admin-orders-0', doc)[0];
+      const $$itens = $$(':scope > .w-100.flex', $itensContainer);
+      const listaItens = $$itens.map(item => ({
+        modelo: $("a", item).innerText,
+        sku: $("a + div > :first-child", item)?.innerText,
+        qtd: $(".admin-orders-1edp9rx .admin-orders-0", item)?.innerText,
+      }))
 
       ctrl_C(pedido, "SITE", nome, cpf, listaItens);
       break;

@@ -2,9 +2,10 @@
 /* copia dados pedidos (DATA/PEDIDO/MKT/NOME/CPF[/MOD/SKU/QTD]) DA (MAGALU/B2W/ML/MLFULL/AMZ/VIA/SITE) */
 
 console.clear();
-console.log("VERSÃO: 2024-09-18");
+console.log("VERSÃO: 2024-10-31");
 var $ = (q, p = document) => p.querySelector(q);
 var $$ = (q, p = document) => [...p.querySelectorAll(q)];
+var link = window.location.href;
 
 
 function ctrl_C(pedido, mkt, nome, cpf, listaItens) {
@@ -27,22 +28,21 @@ function ctrl_C(pedido, mkt, nome, cpf, listaItens) {
 
 
 try {
-  const link = window.location.href;
   switch (true) {
 
-    case link.includes("integracommerce.com.br/Order"): {
+    case link.includes("https://seller.magalu.com/pedidos"): {
       console.log("MGL");
-      const pedido = $('#IdOrder').value;
-      const nome = $('#CustomerPfName').value;
-      const cpf = $('#CustomerPfCpf').value;
+      const pedido = $('h1').textContent;
+      const nome = $$('#order-details-client-info .cYagFp.MuiTypography-body1-771')[0].textContent;
+      const cpf = $$('#order-details-client-info .cYagFp.MuiTypography-body1-771')[2].textContent;
 
-      const $$produtos = $$("div.row.pr15.pl15.mt15 div.col-sm-6");
+      const $$produtos = $$("#order-details-pkg-items tbody tr");
       const listaItens = [];
       for (const $1produto of $$produtos) {
         const obj = {
-          modelo: $('[for="orderProduct_Name"]', $1produto).parentElement.nextElementSibling.innerText,
-          sku: $('[for="orderProduct_SkuId"]', $1produto).parentElement.nextElementSibling.innerText,
-          qtd: $('[for="orderProduct_Quantity"]', $1produto).parentElement.nextElementSibling.innerText,
+          modelo: $('.name', $1produto).textContent,
+          sku: $('.sku', $1produto).textContent,
+          qtd: $('.highlightBlue', $1produto).textContent,
         };
         listaItens.push(obj);
       }
@@ -156,7 +156,7 @@ try {
     }
 
     default: {
-      alert("OXE, TÁ MALUCO? TEM ESSA PÁGINA NÃO!");
+      alert("Página não localizada");
     }
 
   }

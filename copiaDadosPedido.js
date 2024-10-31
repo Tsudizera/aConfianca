@@ -33,8 +33,8 @@ try {
     case link.includes("https://seller.magalu.com/pedidos"): {
       console.log("MGL");
       const pedido = $('h1').textContent;
-      const nome = $$('#order-details-client-info .cYagFp.MuiTypography-body1-771')[0].textContent;
-      const cpf = $$('#order-details-client-info .cYagFp.MuiTypography-body1-771')[2].textContent;
+      const nome = $$('#order-details-client-info p')[1].textContent;
+      const cpf = $$('#order-details-client-info p')[5].textContent;
 
       const $$produtos = $$("#order-details-pkg-items tbody tr");
       const listaItens = [];
